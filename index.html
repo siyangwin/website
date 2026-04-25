@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+            /* 渐变背景 */
+            background: linear-gradient(135deg, #1e2029, #2c3e50, #34495e, #2c3e50);
+            background-size: 400% 400%;
+            animation: bgGradient 12s ease infinite;
+            color: white;
+            padding-bottom: 70px;
+        }
+
+        /* 流动动画 */
+        @keyframes bgGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 30px;
+        }
+
+        /* 主标题效果 */
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #4fc3f7, #81c784, #ffb74d, #4fc3f7);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textShine 6s linear infinite;
+        }
+
+        @keyframes textShine {
+            0% { background-position: 0%; }
+            100% { background-position: 300%; }
+        }
+
+        .sub-title {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        /* 动态点点加载动画 */
+        .dots {
+            display: inline-flex;
+            gap: 8px;
+        }
+        .dots span {
+            width: 10px;
+            height: 10px;
+            background: #4fc3f7;
+            border-radius: 50%;
+            animation: dotBounce 1.2s infinite ease-in-out;
+        }
+        .dots span:nth-child(2) { animation-delay: 0.2s; }
+        .dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes dotBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-12px); opacity: 1; }
+        }
+
+        /* 底部备案栏（标准合规） */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            padding: 14px 0;
+            font-size: 14px;
+            color: #aaa;
+            backdrop-filter: blur(6px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #4fc3f7;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">网站正在建设中</div>
+        <div class="sub-title">我们正在努力打造更优质的体验，敬请期待</div>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- 底部备案号 -->
+    <footer>
+        <a href="https://beian.miit.gov.cn/" target="_blank">工信部备案查询</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span id="icp-number"></span>
+    </footer>
+
+    <script>
+        // 获取URL里的icp参数
+        const params = new URLSearchParams(window.location.search);
+        const icp = params.get('icp') || "粤ICP备00000000号";
+        document.getElementById("icp-number").textContent = icp;
+    </script>
+</body>
+</html>
