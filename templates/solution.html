@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>配置说明 · 域名隐性转发到展示页</title>
+  <meta name="description" content="把域名通过隐性 URL 转发指向展示页的完整配置说明：需要的前置条件、三步操作、各平台叫法差异与注意事项。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="配置说明 · 域名隐性转发到展示页" />
+  <meta property="og:description" content="配置前的两件必备条件、三步操作、各平台叫法差异与注意事项。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2367e8f9'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    :root {
+      --bg-1: #07111f;
+      --bg-2: #111827;
+      --bg-3: #0f172a;
+      --primary: #67e8f9;
+      --secondary: #7c3aed;
+      --accent: #34d399;
+    }
+    .two-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 26px; }
+    @media (max-width: 960px) {
+      .two-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="solution">
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">配</span>
+        <span>配置说明</span>
+      </div>
+      <nav class="nav" aria-label="主导航">
+        <a href="#prepare">前置条件</a>
+        <a href="#steps">三步操作</a>
+        <a href="#platforms">平台差异</a>
+        <a href="#note">注意事项</a>
+        <a href="index.html">返回首页</a>
+      </nav>
+      <div class="icon-links">
+        <a class="icon-button" href="https://github.com/siyangwin/website/issues" target="_blank" rel="noopener" aria-label="问题反馈" title="问题反馈">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-4l-4 3-1-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM8 8h8v2H8V8zm0 4h5v2H8v-2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">详细说明</div>
+      <h1>把域名指向展示页，<span class="gradient">需要做的只有三件事</span></h1>
+      <p class="lead">
+        这套模板不会改变你的域名解析结构，也不需要你部署任何东西。你需要的只有两样：一个已经完成备案的域名，以及域名商提供的 URL 转发功能。
+      </p>
+      <div class="cta-row">
+        <a class="button" href="index.html">去首页生成链接</a>
+        <a class="button secondary" href="#note">先看注意事项</a>
+      </div>
+    </section>
+
+    <section class="section" id="prepare">
+      <div class="section-head">
+        <h2>开始前需要确认两件事</h2>
+        <p>这两件事不满足，后面的操作不会生效。</p>
+      </div>
+      <div class="two-grid">
+        <div class="card">
+          <h3>一、域名已完成备案</h3>
+          <p class="lead">URL 转发是域名商提供的一项服务，通常要求该域名已经完成 ICP 备案。具体限制以你所用服务商的说明为准。</p>
+        </div>
+        <div class="card">
+          <h3>二、域名商提供 URL 转发</h3>
+          <p class="lead">它不是把域名解析到某个 IP，而是由服务商在访问时返回一次跳转。请在控制台里确认存在「URL 转发」这一类功能。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="steps">
+      <div class="section-head">
+        <h2>三步操作</h2>
+        <p>选模板、生成链接、填进转发记录。</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-box">
+          <h3>第 1 步：选一个模板</h3>
+          <ul>
+            <li>在首页挑选风格，点开卡片即可在浏览器里预览实际效果。</li>
+            <li>模板样式是固定的，你不需要改动任何代码。</li>
+          </ul>
+        </div>
+        <div class="step-box">
+          <h3>第 2 步：生成完整链接</h3>
+          <ul>
+            <li>在首页的生成器里填入你的备案号。</li>
+            <li>可选填品牌名、一句话说明和你的站点链接，它们会显示在模板页上。</li>
+            <li>复制生成的完整链接，链接里的参数已经做过百分号编码，可直接粘贴。</li>
+          </ul>
+        </div>
+        <div class="step-box">
+          <h3>第 3 步：新增转发记录</h3>
+          <ul>
+            <li>在域名商的 URL 转发功能里新增一条记录。</li>
+            <li>把上一步复制的完整链接填进记录值，保存后等待生效。</li>
+            <li>用你自己的域名访问一次，确认页面和页脚的备案号都正确。</li>
+          </ul>
+        </div>
+        <div class="step-box">
+          <h3>验证清单</h3>
+          <ul>
+            <li>页面是否正常打开、样式是否完整。</li>
+            <li>页脚显示的备案号是否与你的备案信息一致。</li>
+            <li>移动端打开是否同样可用。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="platforms">
+      <div class="section-head">
+        <h2>各平台的叫法差异</h2>
+        <p>同一个功能在不同服务商那里名字不一样，下面的叫法仅供参考，具体入口与选项请以官方文档为准。</p>
+      </div>
+      <div class="info-grid">
+        <div class="info-box">
+          <h3>阿里云云解析</h3>
+          <p>在解析记录里提供 URL 转发相关的选项。入口位置和命名可能随版本变化，请以阿里云云解析的官方文档为准。</p>
+        </div>
+        <div class="info-box">
+          <h3>腾讯云 / DNSPod</h3>
+          <p>记录类型里通常区分「显性 URL」和「隐性 URL」。两者的区别是访问时地址栏显示的是目标地址还是你自己的域名。</p>
+        </div>
+        <div class="info-box">
+          <h3>Cloudflare 等 DNS 服务</h3>
+          <p>一般通过 Rules 里的重定向规则实现，配置方式与国内域名商的控制台差别较大，请以官方文档为准。</p>
+        </div>
+      </div>
+      <div class="note">
+        关于显性与隐性：隐性转发会在地址栏保持你自己的域名；显性转发会把地址栏里的地址替换成目标地址，访问者会看到展示页的实际路径。如果你不希望访问者看到目标地址，需要先确认你的服务商提供隐性转发。
+      </div>
+    </section>
+
+    <section class="section" id="note">
+      <div class="section-head">
+        <h2>需要注意的几点</h2>
+      </div>
+      <div class="note">
+        <p>URL 转发属于域名商提供的服务，是否支持、是否收费、是否要求备案均由服务商决定，本页不对任何服务商的具体功能作出保证。</p>
+        <p>部分服务商不支持带查询参数的转发，或对记录值的长度有限制。如果遇到这种情况，可以只保留备案号这一个参数。</p>
+        <p>展示页托管在公开的 GitHub Pages 上，中国大陆的访问稳定性可能受网络环境影响。</p>
+        <p>多个域名转发到同一个展示页会产生重复内容，对搜索引擎收录不一定有利。</p>
+        <p>以上只是常见情况，实际配置请以你所用服务商的官方文档和当地监管要求为准。</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-space"></div>
+  <div class="bottom-bar">
+    <div class="bottom-inner">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a>
+      <span aria-hidden="true">|</span>
+      <span data-icp>粤ICP备00000000号</span>
+    </div>
+  </div>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

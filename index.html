@@ -1,136 +1,71 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSite</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正在进入 · 域名展示模板</title>
+  <!-- 这是站点根入口，目前直接转到「域名展示模板」板块。
+       以后做真正的主页时整份替换这个文件，在这里加指向各板块的按钮，
+       并删掉下面的 noindex —— 否则主站不会被搜索引擎收录。 -->
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://siyangwin.github.io/website/templates/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2367e8f9'/%3E%3C/svg%3E">
 
-        body {
-            font-family: "Microsoft YaHei", sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            
-            /* 渐变背景 */
-            background: linear-gradient(135deg, #1e2029, #2c3e50, #34495e, #2c3e50);
-            background-size: 400% 400%;
-            animation: bgGradient 12s ease infinite;
-            color: white;
-            padding-bottom: 70px;
-        }
+  <!-- 这段必须放在下面的 meta refresh 之前：刷新有可能先于页面末尾的脚本触发，
+       那样备案号就来不及写入缓存。放在 head 里先执行，顺序不能调换。 -->
+  <script>
+    /* 一、把入口带来的备案号存进本地存储，之后的跳转就不必把它留在 URL 上。
+       站点主人的域名是以 ?icp=备案号 这种形式进入这个根地址的。
 
-        /* 流动动画 */
-        @keyframes bgGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+       注意：ICP_KEY 这个字面量在 templates/assets/site.js 里也有一份（常量 ICP_KEY），
+       两处必须完全一致——改一处必须改两处。这里不能引用那个文件，根页是自包含的。 */
+    (function () {
+      var ICP_KEY = 'website.icp';
+      var raw = new URLSearchParams(window.location.search).get('icp') || '';
+      var icp = raw.replace(/\s+/g, '');
+      if (icp) {
+        try {
+          window.localStorage.setItem(ICP_KEY, icp);
+        } catch (error) {
+          /* 隐私模式或禁用存储时会抛异常。忽略即可：页脚会回落到占位号，
+             这是「跳转不带参数」换来的既定降级，不能让页面因此出错。 */
         }
+      }
+    })();
 
-        .container {
-            max-width: 600px;
-            padding: 30px;
-        }
+    /* 二、跳转只带锚点，不带查询串：/templates/ 下的页面是站内页面，
+       备案号已经通过上面的缓存接力过去，URL 保持干净。
+       用 replace 而不是 assign，避免后退键在跳转壳上来回弹。 */
+    window.location.replace('templates/' + window.location.hash);
+  </script>
 
-        /* 主标题效果 */
-        .title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #4fc3f7, #81c784, #ffb74d, #4fc3f7);
-            background-size: 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: textShine 6s linear infinite;
-        }
+  <!-- 没有 JavaScript 时的兜底。刻意给 1 秒延迟，保证正常情况永远是上面的脚本先赢。
+       这条路径不会写入缓存，因此页脚会回落占位号。 -->
+  <meta http-equiv="refresh" content="1; url=templates/">
 
-        @keyframes textShine {
-            0% { background-position: 0%; }
-            100% { background-position: 300%; }
-        }
-
-        .sub-title {
-            font-size: 16px;
-            color: #ccc;
-            margin-bottom: 40px;
-        }
-
-        /* 动态点点加载动画 */
-        .dots {
-            display: inline-flex;
-            gap: 8px;
-        }
-        .dots span {
-            width: 10px;
-            height: 10px;
-            background: #4fc3f7;
-            border-radius: 50%;
-            animation: dotBounce 1.2s infinite ease-in-out;
-        }
-        .dots span:nth-child(2) { animation-delay: 0.2s; }
-        .dots span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes dotBounce {
-            0%, 100% { transform: translateY(0); opacity: 0.5; }
-            50% { transform: translateY(-12px); opacity: 1; }
-        }
-
-        /* 底部备案栏（标准合规） */
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.3);
-            padding: 14px 0;
-            font-size: 14px;
-            color: #aaa;
-            backdrop-filter: blur(6px);
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        footer a {
-            color: #aaa;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer a:hover {
-            color: #4fc3f7;
-        }
-
-    </style>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 14px;
+      padding: 24px;
+      text-align: center;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(103, 232, 249, 0.16), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.18), transparent 30%),
+        linear-gradient(135deg, #081521, #101827, #0f172a);
+      color: #a7b7cf;
+    }
+    p { font-size: 15px; line-height: 1.7; }
+    a { color: #67e8f9; }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <div class="title">网站正在建设中</div>
-        <div class="sub-title">我们正在努力打造更优质的体验，敬请期待</div>
-        <div class="dots">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-
-    <!-- 底部备案号 -->
-    <footer>
-        <a href="https://beian.miit.gov.cn/" target="_blank">工信部备案查询</a>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <span id="icp-number"></span>
-    </footer>
-
-    <script>
-        // 获取URL里的icp参数
-        const params = new URLSearchParams(window.location.search);
-        const icp = params.get('icp') || "粤ICP备00000000号";
-        document.getElementById("icp-number").textContent = icp;
-    </script>
+  <p>正在进入「域名展示模板」…</p>
+  <p><a href="templates/">如果没有自动跳转，点这里</a></p>
 </body>
 </html>

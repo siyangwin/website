@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>欢迎访问</title>
+  <meta name="description" content="一个简洁、稳定、可用于长期访问的品牌展示入口。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="欢迎访问" />
+  <meta property="og:description" content="一个简洁、稳定、可用于长期访问的品牌展示入口。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2322d3ee'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    :root {
+      --bg-1: #090910;
+      --bg-2: #111827;
+      --bg-3: #09090f;
+      --primary: #22d3ee;
+      --secondary: #f472b6;
+      --accent: #a3e635;
+    }
+    body {
+      background:
+        radial-gradient(circle at center, rgba(34, 211, 238, 0.18), transparent 20%),
+        radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.16), transparent 30%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+    }
+    .brand-mark { box-shadow: 0 0 22px rgba(34, 211, 238, 0.38); }
+
+    .matrix {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(34, 211, 238, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.08) 1px, transparent 1px);
+      background-size: 30px 30px;
+      -webkit-mask-image: radial-gradient(circle at center, #000 30%, transparent 90%);
+      mask-image: radial-gradient(circle at center, #000 30%, transparent 90%);
+    }
+
+    .title {
+      text-shadow: 0 0 18px rgba(34, 211, 238, 0.55), 0 0 30px rgba(244, 114, 182, 0.25);
+      background: linear-gradient(90deg, var(--primary), #f9a8d4, var(--accent), var(--primary));
+      background-size: 300% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shine 6s linear infinite;
+    }
+
+    .feature-box {
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.16), 0 22px 40px rgba(2, 6, 23, 0.45);
+    }
+
+    @media (max-width: 640px) {
+      .matrix { background-size: 22px 22px; }
+    }
+  </style>
+</head>
+<body data-page="template">
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" data-brand-mark aria-hidden="true"></span>
+        <span data-brand-text hidden></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="hero-inner shell">
+        <div class="matrix" aria-hidden="true"></div>
+        <h1 class="title" data-brand-title>欢迎访问</h1>
+        <p class="sub" data-tagline hidden></p>
+        <div class="dots-wrap" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <section class="panel" data-link-panel hidden>
+      <div class="feature-box">
+        <h2><a class="feature-link" data-link rel="noopener">-</a></h2>
+      </div>
+    </section>
+  </main>
+
+  <div class="bottom-bar">
+    <div class="bottom-inner shell">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a>
+      <span aria-hidden="true">|</span>
+      <span data-icp>粤ICP备00000000号</span>
+    </div>
+  </div>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

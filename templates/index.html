@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>域名展示页模板 · 隐性转发配置</title>
+  <meta name="description" content="为暂时没有服务器的域名提供可直接转发的品牌展示页模板，通过 ?icp= 参数显示你自己的备案号，无需克隆、无需部署。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="域名展示页模板" />
+  <meta property="og:description" content="选一个模板、生成一条带备案号的链接，填进域名商的隐性 URL 转发即可。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2367e8f9'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    :root {
+      --bg-1: #081521;
+      --bg-2: #101827;
+      --bg-3: #0f172a;
+      --primary: #67e8f9;
+      --secondary: #8b5cf6;
+      --accent: #34d399;
+    }
+    /* hero 是单栏排版，正文放宽一点，避免右侧显得空旷 */
+    .hero .lead { max-width: 780px; font-size: 1.12rem; }
+  </style>
+</head>
+<body data-page="index">
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">域</span>
+        <span>域名展示模板</span>
+      </div>
+      <nav class="nav" aria-label="主导航">
+        <a href="#features">功能</a>
+        <a href="#how">配置方法</a>
+        <a href="#templates">生成链接</a>
+        <a href="solution.html">详细说明</a>
+      </nav>
+      <div class="icon-links">
+        <a class="icon-button" href="https://github.com/siyangwin" target="_blank" rel="noopener" aria-label="GitHub 主页">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.22c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.34-3.37-1.34-.46-1.2-1.12-1.52-1.12-1.52-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.58 2.36 1.12 2.93.85.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.4-2.04 1.05-2.76-.1-.26-.45-1.32.1-2.75 0 0 .86-.28 2.82 1.08A9.66 9.66 0 0 1 12 6.9c.87 0 1.75.12 2.57.35 1.96-1.36 2.81-1.08 2.81-1.08.55 1.43.21 2.49.1 2.75.65.72 1.05 1.64 1.05 2.76 0 3.95-2.35 4.81-4.58 5.06.36.32.67.94.67 1.9v2.8c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.22C22 6.58 17.52 2 12 2z"/></svg>
+        </a>
+        <a class="icon-button" href="https://github.com/siyangwin/website/issues" target="_blank" rel="noopener" aria-label="问题反馈" title="问题反馈">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-4l-4 3-1-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM8 8h8v2H8V8zm0 4h5v2H8v-2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="badge">为暂时没有服务器的域名准备</div>
+      <h1>有域名，<span class="gradient">暂时没有服务器</span></h1>
+      <p class="lead">
+        挑一个模板，生成一条带你自己备案号的链接，把它填进域名商的「隐性 URL 转发」。域名打开后就是有内容、有备案信息的展示页——不用买服务器，不用克隆仓库，也不用改代码。
+      </p>
+      <div class="cta-row">
+        <a class="button" href="#how">看配置方法</a>
+        <a class="button secondary" href="#templates">生成我的链接</a>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-head">
+        <h2>这套模板解决三件事</h2>
+        <p>域名不用空着，备案信息不用断，样式不用自己维护。</p>
+      </div>
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="icon" aria-hidden="true">⚡</div>
+          <h3>不需要服务器</h3>
+          <p>展示页托管在公开的 GitHub Pages 上，你的域名只需要做一次转发指向它，不必购买或维护服务器。</p>
+        </div>
+        <div class="info-box">
+          <div class="icon" aria-hidden="true">🛡️</div>
+          <h3>保留备案信息</h3>
+          <p>页面底部固定保留「工信部备案查询」入口，并按你传入的备案号显示你自己的 ICP 号。</p>
+        </div>
+        <div class="info-box">
+          <div class="icon" aria-hidden="true">🎨</div>
+          <h3>三套固定风格</h3>
+          <p>选定一个模板后，访问者看到的就是这套固定样式。你不需要改代码，也不需要自己维护前端。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="section-head">
+        <h2>配置方法</h2>
+        <p>四步，全都在这一个页面里完成。</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-box">
+          <h3>第 1 步：确认你的备案号</h3>
+          <ul>
+            <li>使用你这个域名对应的真实 ICP 备案号，例如「粤ICP备12345678号」。</li>
+            <li>模板页只会显示你传入的值，不会自动校验它与域名的对应关系。</li>
+          </ul>
+        </div>
+        <div class="step-box">
+          <h3>第 2 步：确定模板风格</h3>
+          <ul>
+            <li>三个模板风格固定，在下面每一行的「预览」里可以直接看效果。</li>
+            <li>预览用的备案号和参数，就是你在输入框里填的那一份。</li>
+          </ul>
+        </div>
+        <div class="step-box">
+          <h3>第 3 步：生成并复制链接</h3>
+          <ul>
+            <li>在下面的输入框填入备案号，三个模板的链接会同时更新，例如：<code data-example="template-aurora.html"></code></li>
+            <li>中文备案号会做百分号编码，直接复制粘贴即可。</li>
+          </ul>
+        </div>
+        <div class="step-box">
+          <h3>第 4 步：在域名商处新增转发</h3>
+          <ul>
+            <li>记录类型选「URL 转发」或「URL Redirect」，部分服务商区分显性与隐性。</li>
+            <li>记录值填上一步复制的完整链接，保存后等待生效，再用你的域名访问验证。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="templates">
+      <div class="section-head">
+        <h2>生成链接</h2>
+        <p>填一次参数，三个模板的链接同时更新。每一行就是「模板 → 它对应的链接」，可以直接预览或复制。</p>
+      </div>
+
+      <div class="generator-box" data-generator>
+        <div class="generator-head">
+          <strong>链接参数</strong>
+          <span class="pill">复制后直接粘贴到 DNS 控制台</span>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="icp-input">ICP 备案号（必填）</label>
+            <input id="icp-input" name="icp" type="text" autocomplete="off" placeholder="例如：粤ICP备12345678号" />
+            <p class="hint" data-icp-hint hidden>留空时链接会使用默认备案号 粤ICP备00000000号</p>
+          </div>
+
+          <div class="field">
+            <label for="name-input">品牌名（可选）<span class="field-optional">不填则模板页保持中性</span></label>
+            <input id="name-input" name="n" type="text" autocomplete="off" placeholder="例如：示例科技" />
+          </div>
+
+          <div class="field">
+            <label for="tagline-input">一句话说明（可选）</label>
+            <input id="tagline-input" name="s" type="text" autocomplete="off" placeholder="例如：专注工业视觉检测" />
+          </div>
+
+          <div class="field">
+            <label for="link-input">你的站点链接（可选）</label>
+            <input id="link-input" name="l" type="text" autocomplete="off" placeholder="例如：example.com" />
+            <p class="hint" data-link-hint hidden>请填裸域名或 http(s) 链接，例如 example.com；不合法时该项不会被写进链接。</p>
+          </div>
+        </div>
+
+        <div class="generator-actions">
+          <button class="copy-btn" id="copy-all-btn" type="button" data-copy="all">复制三条链接</button>
+          <span class="copy-status" role="status" aria-live="polite"></span>
+        </div>
+
+        <noscript>
+          <p class="hint">本页的链接生成需要 JavaScript。你也可以手动拼接：<code>https://siyangwin.github.io/website/templates/template-aurora.html?icp=你的备案号</code></p>
+        </noscript>
+
+        <div class="template-list">
+          <div class="template-item">
+            <div class="template-head">
+              <span class="swatch swatch-aurora" aria-hidden="true">🌌</span>
+              <div class="template-meta">
+                <strong>极光流光</strong>
+                <span>冷色渐变与浮动光晕，适合技术与产品类品牌。</span>
+              </div>
+              <div class="template-actions">
+                <a class="copy-btn" data-preview="template-aurora.html" href="template-aurora.html" target="_blank" rel="noopener">预览</a>
+                <button class="copy-btn" type="button" data-copy="template-aurora.html">复制链接</button>
+              </div>
+            </div>
+            <code data-file="template-aurora.html"></code>
+          </div>
+
+          <div class="template-item">
+            <div class="template-head">
+              <span class="swatch swatch-neon" aria-hidden="true">✨</span>
+              <div class="template-meta">
+                <strong>赛博霓虹</strong>
+                <span>网格与霓虹描边，对比强烈，适合创意与互联网品牌。</span>
+              </div>
+              <div class="template-actions">
+                <a class="copy-btn" data-preview="template-neon.html" href="template-neon.html" target="_blank" rel="noopener">预览</a>
+                <button class="copy-btn" type="button" data-copy="template-neon.html">复制链接</button>
+              </div>
+            </div>
+            <code data-file="template-neon.html"></code>
+          </div>
+
+          <div class="template-item">
+            <div class="template-head">
+              <span class="swatch swatch-glass" aria-hidden="true">🧊</span>
+              <div class="template-meta">
+                <strong>玻璃拟态</strong>
+                <span>柔和、克制，适合个人品牌与作品集。</span>
+              </div>
+              <div class="template-actions">
+                <a class="copy-btn" data-preview="template-glass.html" href="template-glass.html" target="_blank" rel="noopener">预览</a>
+                <button class="copy-btn" type="button" data-copy="template-glass.html">复制链接</button>
+              </div>
+            </div>
+            <code data-file="template-glass.html"></code>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-space"></div>
+  <div class="bottom-bar">
+    <div class="bottom-inner">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a>
+      <span aria-hidden="true">|</span>
+      <span data-icp>粤ICP备00000000号</span>
+    </div>
+  </div>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

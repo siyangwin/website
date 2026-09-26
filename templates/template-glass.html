@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>欢迎访问</title>
+  <meta name="description" content="一个简洁、稳定、可用于长期访问的品牌展示入口。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="欢迎访问" />
+  <meta property="og:description" content="一个简洁、稳定、可用于长期访问的品牌展示入口。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2393c5fd'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    :root {
+      --bg-1: #081b2a;
+      --bg-2: #162033;
+      --bg-3: #0f172a;
+      --muted: #b8c7d9;
+      --primary: #93c5fd;
+      --secondary: #c084fc;
+      --accent: #7dd3fc;
+    }
+    body {
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+    }
+    .brand-mark { background: linear-gradient(135deg, rgba(147, 197, 253, 0.6), rgba(192, 132, 252, 0.5)); border: 1px solid rgba(255, 255, 255, 0.12); }
+
+    /* 玻璃拟态是这套模板的全部身份，模糊必须带 -webkit- 前缀，否则旧版 Safari 会完全失去效果 */
+    .hero-inner {
+      width: min(760px, 100%);
+      padding: 56px 28px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 44px rgba(2, 6, 23, 0.35);
+    }
+    .title {
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .dots-wrap span {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+      animation-name: glassPulse;
+    }
+    @keyframes glassPulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.5; }
+      50% { transform: scale(1); opacity: 1; }
+    }
+    .feature-box { background: rgba(15, 23, 42, 0.62); }
+  </style>
+</head>
+<body data-page="template">
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" data-brand-mark aria-hidden="true"></span>
+        <span data-brand-text hidden></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="hero-inner shell">
+        <h1 class="title" data-brand-title>欢迎访问</h1>
+        <p class="sub" data-tagline hidden></p>
+        <div class="dots-wrap" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <section class="panel" data-link-panel hidden>
+      <div class="feature-box">
+        <h2><a class="feature-link" data-link rel="noopener">-</a></h2>
+      </div>
+    </section>
+  </main>
+
+  <div class="bottom-bar">
+    <div class="bottom-inner shell">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">工信部备案查询</a>
+      <span aria-hidden="true">|</span>
+      <span data-icp>粤ICP备00000000号</span>
+    </div>
+  </div>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>
